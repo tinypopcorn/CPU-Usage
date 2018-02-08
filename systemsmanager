@@ -1,0 +1,14 @@
+#!/bin/bash
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+export DISPLAY=:0.0
+echo "This program will monitor your cpu usage, temperature, and battery life"
+
+
+DATA=$(date +%Y-%m-%d)
+logfile=~/Desktop/bash_project/logs/$DATA.log
+
+#echo CPU Usage:  `top -l 1 | grep "CPU usage" | awk '{print $3}'` >> $logfile
+#echo CPU Temp:  `istats | grep "CPU temp" | awk '{ print $3 }'` >> $logfile
+echo `top -l 1 | grep "CPU usage" | awk '{print $3}'`  "," `istats | grep "CPU temp" | awk '{ print $3 }'` "," `date "+%H:%M:%S"` >> $logfile
+
+#/usr/bin/python2.7 ~/Desktop/Bash_project/sm.py
